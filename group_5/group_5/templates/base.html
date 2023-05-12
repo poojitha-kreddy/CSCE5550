@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}E-commerce{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f8f9fa;">
+            <a class="navbar-brand" href="{{ url_for('homepage') }}" style="font-size: 24px; color: green;"><b>E-commerce Website</b></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto" style="font-size: 18px;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('homepage') }}"><span style="color: blue;" > <b>Home</b></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}"><span style="color: blue;" ><b>Register</b></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}"><span style="color: blue;" ><b>Login</b></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}"><span style="color: red;" ><b>Logout</b></span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="alert alert-dismissible fade show" role="alert">
+                    {% for message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

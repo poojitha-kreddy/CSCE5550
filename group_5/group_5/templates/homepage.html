@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form action="{{ url_for('search') }}" method="GET" class="form-inline my-4">
+        <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search for products" aria-label="Search" style="width: 800px;">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+        <h2 class="my-4">Products</h2>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <!-- <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}"> -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">${{ product.price }}</p>
+                            <a href="{{ url_for('product_page', product_id=product.id) }}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

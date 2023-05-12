@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-5">Search Results</h1>
+        {% if message %}
+            <p class="text-center mt-4 text-danger">{{ message }}</p>
+        {% elif products %}
+            <div class="row mt-4">
+                {% for product in products %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="https://via.placeholder.com/150x100" class="card-img-top" alt="{{ product.name }} Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">Price: ${{ product.price }}</p>
+                                <a href="{{ url_for('product_page', product_id=product.id) }}" class="btn btn-primary">View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center mt-4">No products found for your search query.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+<style>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s;
+    }
+
+    .card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-img-top {
+        height: 150px;
+        object-fit: cover;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+
+    p.text-danger {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+</style>

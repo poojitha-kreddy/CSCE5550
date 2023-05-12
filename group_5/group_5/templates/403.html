@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}403 Forbidden{% endblock %}
+
+{% block content %}
+    <h2>403 - Forbidden</h2>
+    <p>You don't have the necessary permissions to access this page.</p>
+    <a href="{{ url_for('homepage') }}">Return to homepage</a>
+{% endblock %}

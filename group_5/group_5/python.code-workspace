@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../python"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"notebook.output.textLineLimit": 300
+	}
+}

@@ -1,0 +1,17 @@
+/* styles.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main {
+    min-height: calc(100vh - 56px);
+    padding-bottom: 30px;
+}
